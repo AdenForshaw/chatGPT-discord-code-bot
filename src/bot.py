@@ -131,7 +131,7 @@ def run_discord_bot():
         logger.info(f'{client.user} is now running!')
 
 
-    @client.tree.command(name="chat", description="Have a chat with ChatGPT")
+    @client.tree.command(name="code", description="Request help with your code")
     async def chat(interaction: discord.Interaction, *, message: str):
         isReplyAll =  os.getenv("REPLYING_ALL")
         if isReplyAll == "True":
@@ -145,7 +145,7 @@ def run_discord_bot():
         username = str(interaction.user)
         channel = str(interaction.channel)
         logger.info(
-            f"\x1b[31m{username}\x1b[0m : /chat [{message}] in ({channel})")
+            f"\x1b[31m{username}\x1b[0m : /code [{message}] in ({channel})")
         await send_message(interaction, message)
 
 
@@ -194,7 +194,7 @@ def run_discord_bot():
                 "> **Info: Next, the bot will response to all message in this channel only.If you want to switch back to normal mode, use `/replyAll` again.**")
             logger.warning("\x1b[31mSwitch to replyAll mode\x1b[0m")
 
-
+"""
     @client.tree.command(name="chat-model", description="Switch different chat model")
     @app_commands.choices(choices=[
         app_commands.Choice(name="Official GPT-3.5", value="OFFICIAL"),
@@ -225,7 +225,7 @@ def run_discord_bot():
                 "> **Info: You are now in Website ChatGPT model.**\n")
             logger.warning("\x1b[31mSwitch to UNOFFICIAL(Website) chat model\x1b[0m")
 
-
+"""
     @client.tree.command(name="reset", description="Complete reset ChatGPT conversation history")
     async def reset(interaction: discord.Interaction):
         chat_model = os.getenv("CHAT_MODEL")
@@ -246,71 +246,17 @@ def run_discord_bot():
         await interaction.response.defer(ephemeral=False)
         await interaction.followup.send(""":star:**BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT!
-        - `/draw [prompt]` Generate an image with the Dalle2 model
-        - `/switchpersona [persona]` Switch between optional chatGPT jailbreaks
-                `random`: Picks a random persona
-                `chatgpt`: Standard chatGPT mode
-                `dan`: Dan Mode 11.0, infamous Do Anything Now Mode
-                `sda`: Superior DAN has even more freedom in DAN Mode
-                `confidant`: Evil Confidant, evil trusted confidant
-                `based`: BasedGPT v2, sexy gpt
-                `oppo`: OPPO says exact opposite of what chatGPT would say
-                `dev`: Developer Mode, v2 Developer mode enabled
-
         - `/private` ChatGPT switch to private mode
         - `/public` ChatGPT switch to public mode
         - `/replyall` ChatGPT switch between replyAll mode and default mode
         - `/reset` Clear ChatGPT conversation history
-        - `/chat-model` Switch different chat model
-                `OFFICIAL`: GPT-3.5 model
-                `UNOFFICIAL`: Website ChatGPT
-                Modifying CHAT_MODEL field in the .env file change the default model
 
-        For complete documentation, please visit https://github.com/Zero6992/chatGPT-discord-bot""")
+        For complete documentation, please visit https://github.com/AdenForshaw/chatGPT-discord-code-bot""")
 
         logger.info(
             "\x1b[31mSomeone needs help!\x1b[0m")
 
-    @client.tree.command(name="draw", description="Generate an image with the Dalle2 model")
-    async def draw(interaction: discord.Interaction, *, prompt: str):
-        isReplyAll =  os.getenv("REPLYING_ALL")
-        if isReplyAll == "True":
-            await interaction.response.defer(ephemeral=False)
-            await interaction.followup.send(
-                "> **Warn: You already on replyAll mode. If you want to use slash command, switch to normal mode, use `/replyall` again**")
-            logger.warning("\x1b[31mYou already on replyAll mode, can't use slash command!\x1b[0m")
-            return
-        if interaction.user == client.user:
-            return
-
-        username = str(interaction.user)
-        channel = str(interaction.channel)
-        logger.info(
-            f"\x1b[31m{username}\x1b[0m : /draw [{prompt}] in ({channel})")
-
-        await interaction.response.defer(thinking=True)
-        try:
-            path = await art.draw(prompt)
-
-            file = discord.File(path, filename="image.png")
-            title = '> **' + prompt + '**\n'
-            embed = discord.Embed(title=title)
-            embed.set_image(url="attachment://image.png")
-
-            await interaction.followup.send(file=file, embed=embed)
-
-        except openai.InvalidRequestError:
-            await interaction.followup.send(
-                "> **Warn: Inappropriate request 😿**")
-            logger.info(
-            f"\x1b[31m{username}\x1b[0m made an inappropriate request.!")
-
-        except Exception as e:
-            await interaction.followup.send(
-                "> **Warn: Something went wrong 😿**")
-            logger.exception(f"Error while generating image: {e}")
-
-
+"""
     @client.tree.command(name="switchpersona", description="Switch between optional chatGPT jailbreaks")
     @app_commands.choices(persona=[
         app_commands.Choice(name="Random", value="random"),
@@ -381,7 +327,7 @@ def run_discord_bot():
                 f"> **Error: No available persona: `{persona}` 😿**")
             logger.info(
                 f'{username} requested an unavailable persona: `{persona}`')
-
+"""
     @client.event
     async def on_message(message):
         isReplyAll =  os.getenv("REPLYING_ALL")
