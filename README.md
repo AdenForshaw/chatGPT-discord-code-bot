@@ -10,43 +10,15 @@
 > #### 2023-03-16 OpenAI has deactivated some accounts using UNOFFICIAL model. Recommend using OFFICIAL model
 ## Features
 
-* `/chat [message]` Chat with ChatGPT!
-* `/draw [prompt]` Generate an image with the Dalle2 model
-* `/switchpersona [persona]` Switch between optional chatGPT jailbreaks
-   * `random`: Picks a random persona
-   * `chatGPT`: Standard chatGPT mode
-   * `dan`: Dan Mode 11.0, infamous Do Anything Now Mode
-   * `sda`: Superior DAN has even more freedom in DAN Mode
-   * `confidant`: Evil Confidant, evil trusted confidant
-   * `based`: BasedGPT v2, sexy gpt
-   * `oppo`: OPPO says exact opposite of what chatGPT would say
-   * `dev`: Developer Mode, v2 Developer mode enabled
-
+* `/code [message]` Ask code related questions
 * `/private` ChatGPT switch to private mode
 * `/public` ChatGPT switch to public mode
 * `/replyall` ChatGPT switch between replyAll mode and default mode
 * `/reset` Clear ChatGPT conversation history
-* `/chat-model` Switch different chat model
-   * `OFFICIAL`: GPT-3.5 model
-   * `UNOFFICIAL`: Website ChatGPT
-   * Modifying CHAT_MODEL field in the .env file change the default model
 
 ### Chat
 
 ![image](https://user-images.githubusercontent.com/89479282/206497774-47d960cd-1aeb-4fba-9af5-1f9d6ff41f00.gif)
-
-### Draw
-
-![image](https://user-images.githubusercontent.com/91911303/223772051-13f840d5-99ef-4762-98d2-d15ce23cbbd5.png)
-
-### Switch Persona
-
-> **Warning**
->
-> Using certain personas may generate vulgar or disturbing content. Use at your own risk.
-
-![image](https://user-images.githubusercontent.com/91911303/223772334-7aece61f-ead7-4119-bcd4-7274979c4702.png)
-
 
 
 ### Mode
